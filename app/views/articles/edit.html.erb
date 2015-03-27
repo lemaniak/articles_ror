@@ -1,0 +1,61 @@
+<h1>Editing Article</h1>
+
+<div class="row">
+
+      <%= form_for :article, url: article_path(@article), method: :patch do |f| %>
+
+          <% if @article.errors.any? %>
+              <div id="error_explanation" class="col-md-4 col-lg-4 alert alert-danger" style="float:none; margin: 0 auto" >
+                <ul>
+                  <% @article.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+      <div class="panel panel-default col-md-4 col-lg-4" style="float:none; margin: 0 auto">
+        <div class="panel-body" style=" text-align: left">
+
+          <div class="form-group">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, {:class => "form-control"} %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description %><br>
+            <%= f.text_area :description, {:class => "form-control"} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price %><br>
+            <%= f.text_field :price , {:class => "form-control"}%>
+          </div>
+          <div class="form-group">
+            <%= f.label :total_in_shelf %><br>
+            <%= f.text_field :total_in_shelf , {:class => "form-control"}%>
+          </div>
+          <div class="form-group">
+            <%= f.label :total_in_vault %><br>
+            <%= f.text_field :total_in_vault, {:class => "form-control"} %>
+          <div>
+
+            </br>
+            <div class="form-group">
+            <%= f.label :store %>
+            <select name="store_id" class="btn-default">
+              <%= @stores.each do |store| %>
+                  <option value="<%= store.id %>"><%= store.name %></option>
+              <% end %>
+            </select>
+          </div>
+            <div class="form-group">
+              <%= f.submit 'Edit', {:class => "btn btn-success pull-right" }   %>
+              <%= link_to 'Back', articles_path , {:class => "btn btn-default pull-left"} %>
+          </div>
+        </div>
+      </div>
+          </div>
+      </div>
+      <% end %>
+
+
+</div>

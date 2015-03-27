@@ -1,0 +1,36 @@
+<h1>Article Details</h1>
+<div class="row">
+  <div class="panel panel-default col-md-4 col-lg-4" style="float:none; margin: 0 auto">
+    <div class="panel-body" style=" text-align: center">
+      <div class="form-group">
+        <label>Name:</label>
+        <label><%= @article.name%></label>
+      </div>
+
+        <div class="form-group">
+        <label>Description:</label>
+        <label><%= @article.description%></label>
+        </div>
+
+          <div class="form-group">
+        <label>Price:</label>
+        <label><%= @article.price%></label>
+          </div>
+            <div class="form-group">
+        <label>total articles in shelf</label>
+        <label><%= @article.total_in_shelf%></label>
+            </div>
+              <div class="form-group">
+        <label>total articles in vault</label>
+        <label><%= @article.total_in_vault%></label>
+              </div>
+                <div class="form-group">
+        <label>Store</label>
+        <label><%= @article.store.name%></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Back', articles_path ,{:class => "btn btn-default" } %>

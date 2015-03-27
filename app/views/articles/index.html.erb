@@ -1,0 +1,38 @@
+<h1>Listing Articles</h1>
+</br>
+<table class="table table-hover" style="text-align: center">
+  <tr style="text-align: center" class="active">
+    <th style="text-align: center">name</th>
+    <th style="text-align: center">description</th>
+    <th style="text-align: center">price</th>
+    <th style="text-align: center">in shelf</th>
+    <th style="text-align: center">in vault</th>
+    <th style="text-align: center">store</th>
+    <th style="text-align: center">actions</th>
+  </tr>
+
+  <% @articles.each do |article| %>
+      <tr style="text-align: center">
+        <td><%= article.name%></td>
+        <td><%= article.description%></td>
+        <td><%= article.price%></td>
+        <td><%= article.total_in_shelf%></td>
+        <td><%= article.total_in_vault%></td>
+        <td><%= article.store.name%></td>
+        <td>
+          <%= link_to article_path(article) ,{:class=> "btn btn-default btn-md"} do %>
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+          <% end %>
+          <%= link_to edit_article_path(article), {:class=> "btn btn-default btn-md"} do %>
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          <% end %>
+          <%= link_to article_path(article), method: :delete,:class=> "btn btn-default btn-md",data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end%>
+          </td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Article', new_article_path,{:class => "btn btn-success" }  %>
+

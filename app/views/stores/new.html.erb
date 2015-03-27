@@ -1,0 +1,35 @@
+<h1>New Store</h1>
+
+<div class="row">
+  <%= form_for :store, url: stores_path do |f| %>
+
+      <% if @store.errors.any? %>
+          <div id="error_explanation" class="col-md-4 col-lg-4 alert alert-danger" style="float:none; margin: 0 auto">
+            <ul>
+              <% @store.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="panel panel-default col-md-4 col-lg-4" style="float:none; margin: 0 auto">
+        <div class="panel-body" style=" text-align: left">
+          <div class="form-group">
+            <%= f.label :name %><br>
+            <%= f.text_field :name,{:class => "form-control"} %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :address %><br>
+            <%= f.text_area :address ,{:class => "form-control"}%>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit 'create Store', {:class => "btn btn-success pull-right"} %>
+            <%= link_to 'Back', stores_path, {:class => "btn btn-default pull-left"} %>
+          </div>
+
+        </div>
+      </div>
+  <% end %>
+</div>
